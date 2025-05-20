@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html lang="pt-BR" class="scroll-smooth">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description"
-    content="Landing page para comunidade de RH com foco em modernidade, acessibilidade e performance.">
+  <meta name="description" content="Landing page para comunidade de RH com foco em modernidade, acessibilidade e performance.">
   <title>RH OTIMIZADO</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -48,169 +46,356 @@
         transform: translateY(0);
       }
     }
+
+/* Estilos do carrossel */
+.carousel {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  border-radius: 0.5rem;
+}
+
+.carousel-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.carousel-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  display: none;
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.carousel-slide.active {
+  opacity: 1;
+  display: block;
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  background-color: rgba(255, 255, 255, 0.7);
+  color: #333;
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  -webkit-tap-highlight-color: transparent; /* Remove highlight on tap for mobile */
+}
+
+@media (min-width: 768px) {
+  .carousel-btn {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.carousel-btn:hover {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.carousel-btn.prev {
+  left: 10px;
+}
+
+.carousel-btn.next {
+  right: 10px;
+}
+
+.dark .carousel-btn {
+  background-color: rgba(55, 65, 81, 0.7);
+  color: white;
+}
+
+.dark .carousel-btn:hover {
+  background-color: rgba(55, 65, 81, 0.9);
+}
+
+.carousel-indicators {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4px;
+  z-index: 10;
+  max-width: 80%;
+  margin: 0 auto;
+  padding: 4px 8px;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 20px;
+}
+
+.carousel-indicators button {
+  width: 6px;
+  height: 6px;
+  margin: 3px 2px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  -webkit-tap-highlight-color: transparent; /* Remove highlight on tap for mobile */
+}
+
+@media (min-width: 768px) {
+  .carousel-indicators {
+    gap: 6px;
+    padding: 0 10px;
+  }
+  
+  .carousel-indicators button {
+    width: 8px;
+    height: 8px;
+    margin: 5px 2px;
+  }
+}
+
+.carousel-indicators button.active {
+  background-color: white;
+  transform: scale(1.2);
+}
+
+.dark .carousel-indicators button {
+  background-color: rgba(156, 163, 175, 0.5);
+}
+
+.dark .carousel-indicators button.active {
+  background-color: #e5e7eb;
+}
+
+/* Estilos para o textarea que cresce com o conteúdo */
+.auto-resize-textarea {
+  min-height: 100px;
+  overflow-y: hidden;
+  resize: none;
+}
   </style>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
 
-<body
-  class="font-sans text-gray-800 dark:text-gray-200 dark:bg-gray-900 overflow-x-hidden transition-colors duration-300">
+<body class="font-sans text-gray-800 dark:text-gray-200 dark:bg-gray-900 overflow-x-hidden transition-colors duration-300">
 
-  
-  <header
-    class="fixed w-full bg-white dark:bg-gray-800 bg-opacity-95 dark:bg-opacity-95 shadow-md z-50 transition-colors duration-300">
+  <!-- [Início da Seção: Navegação] -->
+  <header class="fixed w-full bg-white dark:bg-gray-800 bg-opacity-95 dark:bg-opacity-95 shadow-md z-50 transition-colors duration-300">
     <nav class="container mx-auto px-4 py-3">
       <div class="flex justify-between items-center">
         <a href="#" class="text-primary-700 dark:text-primary-300 font-bold text-xl flex items-center gap-2">
-          <span class="icon-placeholder w-6 h-6 inline-block">
-            
-          </span>
-          <strong>RH OTIMIZADO</strong>
+          <div class="logo-container">
+            <!-- Logo para tema claro -->
+            <img src="Anton2cp.png" alt="RH Otimizado Logo" class="logo-image w-[7rem] h-[3rem] dark:hidden" />
+            <!-- Logo para tema escuro -->
+            <img src="Image3.png" alt="RH Otimizado Logo" class="logo-image w-[7rem] h-[3rem] hidden dark:block" />
+          </div>
         </a>
-
         
+        <!-- Menu Desktop -->
         <div class="hidden md:flex space-x-8">
-          <a href="#inicio"
-            class="text-gray-600 hover:text-primary-600 transition-colors dark:text-gray-300 dark:hover:text-primary-400">Início</a>
-          <a href="#sobre"
-            class="text-gray-600 hover:text-primary-600 transition-colors dark:text-gray-300 dark:hover:text-primary-400">Sobre</a>
-          <a href="#beneficios"
-            class="text-gray-600 hover:text-primary-600 transition-colors dark:text-gray-300 dark:hover:text-primary-400">Benefícios</a>
-          <a href="#depoimentos"
-            class="text-gray-600 hover:text-primary-600 transition-colors dark:text-gray-300 dark:hover:text-primary-400">Depoimentos</a>
-          <a href="#contato"
-            class="text-gray-600 hover:text-primary-600 transition-colors dark:text-gray-300 dark:hover:text-primary-400">Contato</a>
+          <a href="#inicio" class="text-gray-600 hover:text-primary-600 transition-colors dark:text-gray-300 dark:hover:text-primary-400">Início</a>
+          <a href="#sobre" class="text-gray-600 hover:text-primary-600 transition-colors dark:text-gray-300 dark:hover:text-primary-400">Sobre</a>
+          <a href="#beneficios" class="text-gray-600 hover:text-primary-600 transition-colors dark:text-gray-300 dark:hover:text-primary-400">Benefícios</a>
+          <a href="#depoimentos" class="text-gray-600 hover:text-primary-600 transition-colors dark:text-gray-300 dark:hover:text-primary-400">Depoimentos</a>
+          <a href="#patrocinadores" class="text-gray-600 hover:text-primary-600 transition-colors dark:text-gray-300 dark:hover:text-primary-400">Seja um Patrocinador</a>
+          <a href="#contato" class="text-gray-600 hover:text-primary-600 transition-colors dark:text-gray-300 dark:hover:text-primary-400">Contato</a>
         </div>
-
-       
-        <button id="theme-toggle" class="p-2 text-gray-600 dark:text-gray-300 focus:outline-none"
-          aria-label="Alternar modo escuro">
-          
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden dark:inline-block" fill="none"
-            viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+        
+        <!-- Botão Dark Mode -->
+        <button id="theme-toggle" class="p-2 text-gray-600 dark:text-gray-300 focus:outline-none" aria-label="Alternar modo escuro">
+          <!-- Ícone Sol (modo claro) -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden dark:inline-block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
           </svg>
-         
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block dark:hidden" fill="none"
-            viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+          <!-- Ícone Lua (modo escuro) -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
           </svg>
         </button>
-
         
-        <button id="menu-toggle" class="md:hidden text-gray-600 dark:text-gray-300 focus:outline-none"
-          aria-label="Abrir menu">
+        <!-- Botão Menu Mobile -->
+        <button id="menu-toggle" class="md:hidden text-gray-600 dark:text-gray-300 focus:outline-none" aria-label="Abrir menu">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
           </svg>
         </button>
       </div>
-
-     
-      <div id="mobile-menu"
-        class="md:hidden hidden bg-white dark:bg-gray-800 py-4 transition-all duration-300 ease-in-out">
+      
+      <!-- Menu Mobile -->
+      <div id="mobile-menu" class="md:hidden hidden bg-white dark:bg-gray-800 py-4 transition-all duration-300 ease-in-out">
         <div class="flex flex-col space-y-4">
-          <a href="#inicio"
-            class="text-gray-600 hover:text-primary-600 transition-colors dark:text-gray-300 dark:hover:text-primary-400 px-4">Início</a>
-          <a href="#sobre"
-            class="text-gray-600 hover:text-primary-600 transition-colors dark:text-gray-300 dark:hover:text-primary-400 px-4">Sobre</a>
-          <a href="#beneficios"
-            class="text-gray-600 hover:text-primary-600 transition-colors dark:text-gray-300 dark:hover:text-primary-400 px-4">Benefícios</a>
-          <a href="#depoimentos"
-            class="text-gray-600 hover:text-primary-600 transition-colors dark:text-gray-300 dark:hover:text-primary-400 px-4">Depoimentos</a>
-          <a href="#contato"
-            class="text-gray-600 hover:text-primary-600 transition-colors dark:text-gray-300 dark:hover:text-primary-400 px-4">Contato</a>
+          <a href="#inicio" class="text-gray-600 hover:text-primary-600 transition-colors dark:text-gray-300 dark:hover:text-primary-400 px-4">Início</a>
+          <a href="#sobre" class="text-gray-600 hover:text-primary-600 transition-colors dark:text-gray-300 dark:hover:text-primary-400 px-4">Sobre</a>
+          <a href="#beneficios" class="text-gray-600 hover:text-primary-600 transition-colors dark:text-gray-300 dark:hover:text-primary-400 px-4">Benefícios</a>
+          <a href="#depoimentos" class="text-gray-600 hover:text-primary-600 transition-colors dark:text-gray-300 dark:hover:text-primary-400 px-4">Depoimentos</a>
+          <a href="#patrocinadores" class="text-gray-600 hover:text-primary-600 transition-colors dark:text-gray-300 dark:hover:text-primary-400 px-4">Seja um Patrocinador</a>
+          <a href="#contato" class="text-gray-600 hover:text-primary-600 transition-colors dark:text-gray-300 dark:hover:text-primary-400 px-4">Contato</a>
         </div>
       </div>
     </nav>
   </header>
-  
+  <!-- [Fim da Seção: Navegação] -->
 
   <main>
-    
-    <section id="inicio"
-      class="min-h-screen flex items-center justify-center bg-primary-700 bg-cover bg-center relative pt-16">
+    <!-- [Início da Seção: Hero] -->
+    <section id="inicio" class="min-h-screen flex items-center justify-center bg-primary-700 bg-cover bg-center relative pt-16">
       <!-- Overlay para melhorar legibilidade do texto -->
-      <div class="absolute inset-0 bg-primary-900 bg-opacity-70 dark:bg-opacity-80"
-        style="background-image: url('photo1699814683.jpeg'); background-size: cover; background-position: center; background-blend-mode: overlay;">
-      </div>
-
+      <div class="absolute inset-0 bg-primary-900 bg-opacity-70 dark:bg-opacity-80" style="background-image: url('photo1699814683.jpeg'); background-size: cover; background-position: center; background-blend-mode: overlay;"></div>
+      
       <div class="container mx-auto px-4 py-16 relative z-10 text-center">
         <div class="max-w-3xl mx-auto transition-fade" data-animate>
           <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 text-shadow">
-            Transforme sua carreira em Recursos Humanos
+            RH Otimizado
           </h1>
           <p class="text-xl md:text-2xl text-white mb-8 text-shadow">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed
-            erat molestie vehicula.
+            Comunidade de RH com propósito de unir os profissionais, estudantes e amantes de gestão de pessoas, para compartilhar conteúdos da área de RH, carreira, mercado de trabalho, e tendências mais atuais da área.
           </p>
-          <a href="#contato"
-            class="inline-block bg-white text-primary-700 font-bold py-3 px-8 rounded-full shadow-lg hover:bg-primary-50 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+          <a href="#contato" class="inline-block bg-white text-primary-700 font-bold py-3 px-8 rounded-full shadow-lg hover:bg-primary-50 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
             Junte-se à Comunidade
           </a>
         </div>
       </div>
     </section>
-   
+    <!-- [Fim da Seção: Hero] -->
+
+    <!-- [Início da Seção: Sobre] -->
     <section id="sobre" class="py-20 bg-white dark:bg-gray-900 transition-colors duration-300">
       <div class="container mx-auto px-4">
         <div class="text-center mb-16 transition-fade" data-animate>
           <h2 class="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-4">Sobre a Comunidade</h2>
           <div class="w-20 h-1 bg-primary-500 mx-auto mb-6"></div>
           <p class="text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            Conheça mais sobre nossa comunidade e como estamos transformando o mercado de RH.
+            Nossa comunidade é dedicada a profissionais de Recursos Humanos que buscam aprimorar suas habilidades e
+            expandir sua rede de contatos. Oferecemos uma plataforma para troca de experiências, aprendizado e
+            crescimento profissional.
           </p>
         </div>
 
-        <div class="flex flex-col md:flex-row items-center gap-12">
-          <div class="md:w-1/2 transition-fade" data-animate>
-            <div class="rounded-lg overflow-hidden shadow-xl" role="presentation">
-              <!-- Imagem placeholder -->
-              <img
-                src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-                alt="Equipe de profissionais de RH em reunião" class="w-full h-auto" loading="lazy" />
+        <!-- Layout horizontal com carrossel à esquerda e texto à direita -->
+        <div class="flex flex-col md:flex-row gap-12 items-center">
+          <!-- Carrossel à esquerda -->
+          <div class="w-full md:w-1/2 h-[400px] rounded-lg overflow-hidden shadow-xl transition-fade" data-animate>
+            <div class="carousel h-full rounded-lg" role="region" aria-label="Galeria de imagens">
+              <!-- Container do carrossel -->
+              <div class="carousel-container">
+                <!-- Slides do carrossel -->
+                <div class="carousel-slide active">
+                  <img src="Foto1.jpg" alt="Profissionais colaborando em um projeto" class="w-full h-full object-cover" loading="lazy" />
+                </div>
+                <div class="carousel-slide">
+                  <img src="Foto2.jpg" alt="Reunião de estratégia de RH" class="w-full h-full object-cover" loading="lazy" />
+                </div>
+                <div class="carousel-slide">
+                  <img src="Foto3.jpg" alt="Profissionais de RH analisando dados" class="w-full h-full object-cover" loading="lazy" />
+                </div>
+                <div class="carousel-slide">
+                  <img src="Foto4.jpg" alt="Treinamento corporativo" class="w-full h-full object-cover" loading="lazy" />
+                </div>
+                <div class="carousel-slide">
+                  <img src="Foto5.jpg" alt="Equipe trabalhando em escritório moderno" class="w-full h-full object-cover" loading="lazy" />
+                </div>
+                <div class="carousel-slide">
+                  <img src="Foto6.jpg" alt="Equipe trabalhando em escritório moderno" class="w-full h-full object-cover" loading="lazy" />
+                </div>
+                <div class="carousel-slide">
+                  <img src="Foto7.jpg" alt="Equipe trabalhando em escritório moderno" class="w-full h-full object-cover" loading="lazy" />
+                </div>
+                <div class="carousel-slide">
+                  <img src="Foto8.jpg" alt="Equipe trabalhando em escritório moderno" class="w-full h-full object-cover" loading="lazy" />
+                </div>
+                <div class="carousel-slide">
+                  <img src="Foto9.jpg" alt="Equipe trabalhando em escritório moderno" class="w-full h-full object-cover" loading="lazy" />
+                </div>
+                <div class="carousel-slide">
+                  <img src="Foto10.jpg" alt="Equipe trabalhando em escritório moderno" class="w-full h-full object-cover" loading="lazy" />
+                </div>
+                <div class="carousel-slide">
+                  <img src="Foto11.jpg" alt="Equipe trabalhando em escritório moderno" class="w-full h-full object-cover" loading="lazy" />
+                </div>
+                <div class="carousel-slide">
+                  <img src="Foto12.jpg" alt="Equipe trabalhando em escritório moderno" class="w-full h-full object-cover" loading="lazy" />
+                </div>
+              </div>
+
+              <!-- Botões de navegação -->
+              <button class="carousel-btn prev" aria-label="Imagem anterior">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+              <button class="carousel-btn next" aria-label="Próxima imagem">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+
+              <!-- Indicadores -->
+              <div class="carousel-indicators"></div>
             </div>
           </div>
 
-          <div class="md:w-1/2 transition-fade" data-animate>
+          <!-- Conteúdo "Nossa Missão" à direita -->
+          <div class="w-full md:w-1/2 transition-fade" data-animate>
             <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">Nossa Missão</h3>
             <p class="text-gray-600 dark:text-gray-300 mb-6">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed
-              erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim.
+              Fortalecer relacionamentos interpessoais através do networking, contribuir na jornada profissional para os
+              iniciantes da área, gerar conteúdos de qualidade para toda a comunidade de RH e promover um ambiente
+              colaborativo, inclusivo e inovador, que valorize o desenvolvimento contínuo, o compartilhamento de
+              experiências e o impacto positivo nas organizações e na sociedade.
             </p>
             <p class="text-gray-600 dark:text-gray-300 mb-6">
-              Suspendisse in justo eu magna luctus suscipit. Sed lectus. Integer euismod lacus luctus magna. Quisque
-              cursus, metus vitae pharetra auctor, sem massa mattis sem, at interdum magna augue eget diam.
+              Ser uma referência em conexões humanas, unindo profissionais de gestão de pessoas em uma rede colaborativa
+              que inspira, transforma e impulsiona o desenvolvimento pessoal, profissional e organizacional.
             </p>
-            <div class="flex flex-wrap gap-4">
+
+            <!-- Estatísticas com ícones mais parecidos com a imagem de referência -->
+            <div class="flex flex-wrap gap-8 mt-8">
               <div class="flex items-center">
-                <!-- Ícone aqui (substitua por SVG ou biblioteca futura) -->
-                <div class="bg-primary-100 dark:bg-primary-900 p-3 rounded-full text-primary-600 dark:text-primary-300">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                    stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                <div class="bg-blue-100 dark:bg-blue-900 p-3 rounded-full text-blue-600 dark:text-blue-300 mr-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
                   </svg>
                 </div>
-                <span class="ml-2 text-gray-700 dark:text-gray-300">+5000 Membros</span>
+                <span class="text-gray-700 dark:text-gray-300 font-medium">+350 Membros</span>
               </div>
               <div class="flex items-center">
-                <!-- Ícone aqui (substitua por SVG ou biblioteca futura) -->
-                <div class="bg-primary-100 dark:bg-primary-900 p-3 rounded-full text-primary-600 dark:text-primary-300">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                    stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                <div class="bg-blue-100 dark:bg-blue-900 p-3 rounded-full text-blue-600 dark:text-blue-300 mr-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
                   </svg>
                 </div>
-                <span class="ml-2 text-gray-700 dark:text-gray-300">+200 Eventos</span>
+                <span class="text-gray-700 dark:text-gray-300 font-medium">+10 Eventos</span>
               </div>
             </div>
           </div>
         </div>
       </div>
     </section>
-    
+    <!-- [Fim da Seção: Sobre] -->
+
+    <!-- [Início da Seção: Benefícios] -->
     <section id="beneficios" class="py-20 bg-gray-50 dark:bg-gray-800 transition-colors duration-300">
       <div class="container mx-auto px-4">
         <div class="text-center mb-16 transition-fade" data-animate>
@@ -222,15 +407,12 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          
+          <!-- Card 1 -->
           <div class="bg-white dark:bg-gray-700 rounded-lg shadow-lg p-8 transition-fade" data-animate>
-            <div
-              class="bg-primary-100 dark:bg-primary-900 p-4 rounded-full w-16 h-16 flex items-center justify-center mb-6 mx-auto">
+            <div class="bg-primary-100 dark:bg-primary-900 p-4 rounded-full w-16 h-16 flex items-center justify-center mb-6 mx-auto">
               <!-- Ícone aqui (substitua por SVG ou biblioteca futura) -->
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-primary-600 dark:text-primary-300" fill="none"
-                viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-primary-600 dark:text-primary-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
               </svg>
             </div>
             <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4 text-center">Conteúdo Exclusivo</h3>
@@ -240,15 +422,12 @@
             </p>
           </div>
 
-         
+          <!-- Card 2 -->
           <div class="bg-white dark:bg-gray-700 rounded-lg shadow-lg p-8 transition-fade" data-animate>
-            <div
-              class="bg-primary-100 dark:bg-primary-900 p-4 rounded-full w-16 h-16 flex items-center justify-center mb-6 mx-auto">
+            <div class="bg-primary-100 dark:bg-primary-900 p-4 rounded-full w-16 h-16 flex items-center justify-center mb-6 mx-auto">
               <!-- Ícone aqui (substitua por SVG ou biblioteca futura) -->
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-primary-600 dark:text-primary-300" fill="none"
-                viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-primary-600 dark:text-primary-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
               </svg>
             </div>
             <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4 text-center">Networking</h3>
@@ -258,15 +437,12 @@
             </p>
           </div>
 
-          
+          <!-- Card 3 -->
           <div class="bg-white dark:bg-gray-700 rounded-lg shadow-lg p-8 transition-fade" data-animate>
-            <div
-              class="bg-primary-100 dark:bg-primary-900 p-4 rounded-full w-16 h-16 flex items-center justify-center mb-6 mx-auto">
+            <div class="bg-primary-100 dark:bg-primary-900 p-4 rounded-full w-16 h-16 flex items-center justify-center mb-6 mx-auto">
               <!-- Ícone aqui (substitua por SVG ou biblioteca futura) -->
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-primary-600 dark:text-primary-300" fill="none"
-                viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-primary-600 dark:text-primary-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
               </svg>
             </div>
             <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4 text-center">Oportunidades</h3>
@@ -276,15 +452,12 @@
             </p>
           </div>
 
-          
+          <!-- Card 4 -->
           <div class="bg-white dark:bg-gray-700 rounded-lg shadow-lg p-8 transition-fade" data-animate>
-            <div
-              class="bg-primary-100 dark:bg-primary-900 p-4 rounded-full w-16 h-16 flex items-center justify-center mb-6 mx-auto">
+            <div class="bg-primary-100 dark:bg-primary-900 p-4 rounded-full w-16 h-16 flex items-center justify-center mb-6 mx-auto">
               <!-- Ícone aqui (substitua por SVG ou biblioteca futura) -->
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-primary-600 dark:text-primary-300" fill="none"
-                viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-primary-600 dark:text-primary-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
               </svg>
             </div>
             <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4 text-center">Eventos Exclusivos</h3>
@@ -296,7 +469,9 @@
         </div>
       </div>
     </section>
-    
+    <!-- [Fim da Seção: Benefícios] -->
+
+    <!-- [Início da Seção: Depoimentos] -->
     <section id="depoimentos" class="py-20 bg-white dark:bg-gray-900 transition-colors duration-300">
       <div class="container mx-auto px-4">
         <div class="text-center mb-16 transition-fade" data-animate>
@@ -309,12 +484,9 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <!-- Depoimento 1 -->
-          <div
-            class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 border border-gray-100 dark:border-gray-700 transition-fade"
-            data-animate>
+          <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 border border-gray-100 dark:border-gray-700 transition-fade" data-animate>
             <div class="flex items-center mb-6">
-              <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Avatar de Ana Silva"
-                class="w-16 h-16 rounded-full object-cover mr-4" loading="lazy" />
+              <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Avatar de Ana Silva" class="w-16 h-16 rounded-full object-cover mr-4" loading="lazy" />
               <div>
                 <h4 class="text-lg font-bold text-gray-800 dark:text-white">Ana Silva</h4>
                 <p class="text-gray-600 dark:text-gray-400">Gerente de RH</p>
@@ -327,35 +499,27 @@
             <div class="flex mt-4 text-primary-500 dark:text-primary-400">
               <!-- Estrelas de avaliação -->
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                <path
-                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
               </svg>
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                <path
-                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
               </svg>
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                <path
-                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
               </svg>
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                <path
-                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
               </svg>
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                <path
-                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
               </svg>
             </div>
           </div>
 
           <!-- Depoimento 2 -->
-          <div
-            class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 border border-gray-100 dark:border-gray-700 transition-fade"
-            data-animate>
+          <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 border border-gray-100 dark:border-gray-700 transition-fade" data-animate>
             <div class="flex items-center mb-6">
-              <img src="https://randomuser.me/api/portraits/men/44.jpg" alt="Avatar de Carlos Mendes"
-                class="w-16 h-16 rounded-full object-cover mr-4" loading="lazy" />
+              <img src="https://randomuser.me/api/portraits/men/44.jpg" alt="Avatar de Carlos Mendes" class="w-16 h-16 rounded-full object-cover mr-4" loading="lazy" />
               <div>
                 <h4 class="text-lg font-bold text-gray-800 dark:text-white">Carlos Mendes</h4>
                 <p class="text-gray-600 dark:text-gray-400">Especialista em Recrutamento</p>
@@ -368,34 +532,27 @@
             <div class="flex mt-4 text-primary-500 dark:text-primary-400">
               <!-- Estrelas de avaliação -->
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                <path
-                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
               </svg>
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                <path
-                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
               </svg>
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                <path
-                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
               </svg>
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                <path
-                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
               </svg>
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                <path
-                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
               </svg>
             </div>
           </div>
 
-          <div
-            class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 border border-gray-100 dark:border-gray-700 transition-fade"
-            data-animate>
+          <!-- Depoimento 3 -->
+          <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 border border-gray-100 dark:border-gray-700 transition-fade" data-animate>
             <div class="flex items-center mb-6">
-              <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Avatar de Mariana Costa"
-                class="w-16 h-16 rounded-full object-cover mr-4" loading="lazy" />
+              <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Avatar de Mariana Costa" class="w-16 h-16 rounded-full object-cover mr-4" loading="lazy" />
               <div>
                 <h4 class="text-lg font-bold text-gray-800 dark:text-white">Mariana Costa</h4>
                 <p class="text-gray-600 dark:text-gray-400">Analista de RH</p>
@@ -408,32 +565,43 @@
             <div class="flex mt-4 text-primary-500 dark:text-primary-400">
               <!-- Estrelas de avaliação -->
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                <path
-                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
               </svg>
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                <path
-                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
               </svg>
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                <path
-                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
               </svg>
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                <path
-                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
               </svg>
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                <path
-                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
               </svg>
             </div>
           </div>
         </div>
       </div>
     </section>
-    
-    <section id="contato" class="py-20 bg-gray-50 dark:bg-gray-800 transition-colors duration-300">
+    <!-- [Fim da Seção: Depoimentos] -->
+
+    <!-- [Início da Seção: Patrocinadores] -->
+    <section id="patrocinadores" class="py-20 bg-white dark:bg-gray-900 transition-colors duration-300">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-16 transition-fade" data-animate>
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-4">Seja nosso patrocinador</h2>
+          <div class="w-20 h-1 bg-primary-500 mx-auto mb-6"></div>
+          <p class="text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            Sua marca impulsionando o crescimento da comunidade RH Otimizado. Ao apoiar nossa rede, você investe no desenvolvimento de profissionais de RH, fortalece sua presença no setor e se conecta com quem está transformando o futuro do trabalho.
+          </p>
+        </div>
+      </div>
+    </section>
+    <!-- [Fim da Seção: Patrocinadores] -->
+
+    <!-- [Início da Seção: Contato] -->
+    <section id="contato" class="py-20 bg-gray-50 dark:bg-gray-700 transition-colors duration-300">
       <div class="container mx-auto px-4">
         <div class="text-center mb-16 transition-fade" data-animate>
           <h2 class="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-4">Entre em Contato</h2>
@@ -445,128 +613,83 @@
 
         <div class="flex flex-col md:flex-row gap-12">
           <div class="md:w-1/2 transition-fade" data-animate>
-            <form class="bg-white dark:bg-gray-700 rounded-lg shadow-lg p-8">
+            <form action="https://formsubmit.co/reynar_sepol@hotmail.com" method="POST" class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8">
               <div class="mb-6">
                 <label for="nome" class="block text-gray-700 dark:text-gray-200 font-medium mb-2">Nome</label>
-                <input type="text" id="nome" name="nome"
-                  class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent dark:bg-gray-800 dark:text-white"
-                  placeholder="Seu nome completo" required />
+                <input type="text" id="nome" name="name" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent dark:bg-gray-700 dark:text-white" placeholder="Seu nome completo" required />
               </div>
 
               <div class="mb-6">
                 <label for="email" class="block text-gray-700 dark:text-gray-200 font-medium mb-2">E-mail</label>
-                <input type="email" id="email" name="email"
-                  class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent dark:bg-gray-800 dark:text-white"
-                  placeholder="seu.email@exemplo.com" required />
+                <input type="email" id="email" name="email" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent dark:bg-gray-700 dark:text-white" placeholder="seu.email@exemplo.com" required />
               </div>
 
               <div class="mb-6">
-                <label for="mensagem" class="block text-gray-700 dark:text-gray-200 font-medium mb-2">
-                  Mensagem
-                </label>
-                <textarea id="mensagem" name="mensagem" rows="1" oninput="autoResize(this)" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg 
-           focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent 
-           dark:bg-gray-800 dark:text-white resize-none max-h-[300px] overflow-y-auto"
-                  placeholder="Digite sua mensagem aqui..." required></textarea>
+                <label for="mensagem" class="block text-gray-700 dark:text-gray-200 font-medium mb-2">Mensagem</label>
+                <textarea id="mensagem" name="message" class="auto-resize-textarea w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent dark:bg-gray-700 dark:text-white" placeholder="Digite sua mensagem aqui..." required></textarea>
               </div>
 
-              <button type="submit"
-                class="w-full bg-primary-600 text-white font-bold py-3 px-6 rounded-lg shadow-md hover:bg-primary-700 transition-colors duration-300">
+              <button type="submit" class="w-full bg-primary-600 text-white font-bold py-3 px-6 rounded-lg shadow-md hover:bg-primary-700 transition-colors duration-300">
                 Enviar Mensagem
               </button>
             </form>
           </div>
 
           <div class="md:w-1/2 transition-fade" data-animate>
-            <div class="bg-white dark:bg-gray-700 rounded-lg shadow-lg p-8 h-full">
-              <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-6">Informações de Contato</h3>
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 h-full flex flex-col">
+              <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-6 text-center">Informações de Contato</h3>
 
-              <div class="space-y-6">
-                <div class="flex items-start">
-                  <!-- Ícone aqui (substitua por SVG ou biblioteca futura) -->
-                  <div
-                    class="bg-primary-100 dark:bg-primary-900 p-3 rounded-full text-primary-600 dark:text-primary-300 mr-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                      stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              <div class="space-y-6 flex-grow flex flex-col items-center">
+                <div class="flex flex-col items-center text-center">
+                  <div class="bg-primary-100 dark:bg-primary-900 p-3 rounded-full text-primary-600 dark:text-primary-300 mb-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
                   </div>
-                  <div>
+                  <div class="text-center">
                     <h4 class="text-lg font-semibold text-gray-800 dark:text-white">E-mail</h4>
-                    <p class="text-gray-600 dark:text-gray-300">contato@comunidaderh.com.br</p>
+                    <p class="text-gray-600 dark:text-gray-300">comunidaderh23@gmail.com</p>
                   </div>
                 </div>
-
-                <div class="flex items-start">
-                  <!-- Ícone aqui (substitua por SVG ou biblioteca futura) -->
-                  <div
-                    class="bg-primary-100 dark:bg-primary-900 p-3 rounded-full text-primary-600 dark:text-primary-300 mr-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                      stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                
+                <!-- Horário de atendimento -->
+                <div class="flex flex-col items-center text-center">
+                  <div class="bg-primary-100 dark:bg-primary-900 p-3 rounded-full text-primary-600 dark:text-primary-300 mb-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                   </div>
-                  <div>
-                    <h4 class="text-lg font-semibold text-gray-800 dark:text-white">Telefone</h4>
-                    <p class="text-gray-600 dark:text-gray-300">(11) 9999-9999</p>
+                  <div class="text-center">
+                    <h4 class="text-lg font-semibold text-gray-800 dark:text-white">Horário de Atendimento</h4>
+                    <p class="text-gray-600 dark:text-gray-300">Segunda a Sexta: 9h às 18h</p>
                   </div>
                 </div>
 
-                <div class="flex items-start">
-                  <!-- Ícone aqui (substitua por SVG ou biblioteca futura) -->
-                  <div
-                    class="bg-primary-100 dark:bg-primary-900 p-3 rounded-full text-primary-600 dark:text-primary-300 mr-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                      stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h4 class="text-lg font-semibold text-gray-800 dark:text-white">Endereço</h4>
-                    <p class="text-gray-600 dark:text-gray-300">Av. Paulista, 1000 - São Paulo, SP</p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="mt-8">
+              <div class="mt-8 flex flex-col items-center">
                 <h4 class="text-lg font-semibold text-gray-800 dark:text-white mb-4">Siga-nos nas redes sociais</h4>
-                <div class="flex space-x-4">
+                <div class="flex justify-center space-x-4">
                   <!-- Ícones de redes sociais -->
-                  <a href="#"
-                    class="bg-primary-100 dark:bg-primary-900 p-3 rounded-full text-primary-600 dark:text-primary-300 hover:bg-primary-200 dark:hover:bg-primary-800 transition-colors"
-                    aria-label="Facebook">
+                  <a href="https://www.facebook.com/profile.php?id=61550733022928&sk=mentions" target="_blank" rel="noopener noreferrer" class="bg-primary-100 dark:bg-primary-900 p-3 rounded-full text-primary-600 dark:text-primary-300 hover:bg-primary-200 dark:hover:bg-primary-800 transition-colors" aria-label="Facebook">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                      <path
-                        d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
+                      <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
                     </svg>
                   </a>
-                  <a href="#"
-                    class="bg-primary-100 dark:bg-primary-900 p-3 rounded-full text-primary-600 dark:text-primary-300 hover:bg-primary-200 dark:hover:bg-primary-800 transition-colors"
-                    aria-label="Twitter">
+
+                  <a href="https://x.com/RHOtimizado" target="_blank" rel="noopener noreferrer" class="bg-primary-100 dark:bg-primary-900 p-3 rounded-full text-primary-600 dark:text-primary-300 hover:bg-primary-200 dark:hover:bg-primary-800 transition-colors" aria-label="Twitter">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                      <path
-                        d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
+                      <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
                     </svg>
                   </a>
-                  <a href="#"
-                    class="bg-primary-100 dark:bg-primary-900 p-3 rounded-full text-primary-600 dark:text-primary-300 hover:bg-primary-200 dark:hover:bg-primary-800 transition-colors"
-                    aria-label="Instagram">
+
+                  <a href="https://www.instagram.com/rh.otimizado" target="_blank" rel="noopener noreferrer" class="bg-primary-100 dark:bg-primary-900 p-3 rounded-full text-primary-600 dark:text-primary-300 hover:bg-primary-200 dark:hover:bg-primary-800 transition-colors" aria-label="Instagram">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                      <path
-                        d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
                     </svg>
                   </a>
-                  <a href="#"
-                    class="bg-primary-100 dark:bg-primary-900 p-3 rounded-full text-primary-600 dark:text-primary-300 hover:bg-primary-200 dark:hover:bg-primary-800 transition-colors"
-                    aria-label="LinkedIn">
+
+                  <a href="https://www.linkedin.com/company/rh-otimizado/" target="_blank" rel="noopener noreferrer" class="bg-primary-100 dark:bg-primary-900 p-3 rounded-full text-primary-600 dark:text-primary-300 hover:bg-primary-200 dark:hover:bg-primary-800 transition-colors" aria-label="LinkedIn">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                      <path
-                        d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z" />
+                      <path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z" />
                     </svg>
                   </a>
                 </div>
@@ -576,20 +699,27 @@
         </div>
       </div>
     </section>
-    
+    <!-- [Fim da Seção: Contato] -->
   </main>
+ 
 
-  
-  <footer class="bg-gray-800 text-white py-12">
+  <!-- [Início da Seção: Rodapé] -->
+  <footer class="bg-gray-900 text-white py-12">
     <div class="container mx-auto px-4">
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         <div>
-          <h3 class="text-xl font-bold mb-4">Comunidade RH</h3>
+          <!-- Logo no footer -->
+          <div class="mb-4">
+            <!-- Logo para tema claro -->
+            <img src="Image3.png" alt="RH Otimizado Logo" class="w-[7rem] h-[3rem] dark:hidden" />
+            <!-- Logo para tema escuro -->
+            <img src="Image3.png" alt="RH Otimizado Logo" class="w-[7rem] h-[3rem] hidden dark:block" />
+          </div>
           <p class="text-gray-400 mb-4">
             Transformando a forma como os profissionais de RH se conectam e evoluem.
           </p>
           <p class="text-gray-400">
-            &copy; 2025 Comunidade RH. Todos os direitos reservados.
+            &copy; 2025 RH OTIMIZADO. Todos os direitos reservados.
           </p>
         </div>
 
@@ -600,6 +730,7 @@
             <li><a href="#sobre" class="text-gray-400 hover:text-white transition-colors">Sobre</a></li>
             <li><a href="#beneficios" class="text-gray-400 hover:text-white transition-colors">Benefícios</a></li>
             <li><a href="#depoimentos" class="text-gray-400 hover:text-white transition-colors">Depoimentos</a></li>
+            <li><a href="#patrocinador" class="text-gray-400 hover:text-white transition-colors">Seja um Patrocinador</a></li>
             <li><a href="#contato" class="text-gray-400 hover:text-white transition-colors">Contato</a></li>
           </ul>
         </div>
@@ -607,39 +738,17 @@
         <div>
           <h4 class="text-lg font-semibold mb-4">Recursos</h4>
           <ul class="space-y-2">
-            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
             <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Eventos</a></li>
-            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Webinars</a></li>
-            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">E-books</a></li>
-            <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Podcast</a></li>
           </ul>
-        </div>
-
-        <div>
-          <h4 class="text-lg font-semibold mb-4">Newsletter</h4>
-          <p class="text-gray-400 mb-4">
-            Inscreva-se para receber novidades e conteúdos exclusivos.
-          </p>
-          <form class="flex">
-            <input type="email" placeholder="Seu e-mail"
-              class="px-4 py-2 rounded-l-lg focus:outline-none text-gray-800 w-full" required />
-            <button type="submit"
-              class="bg-primary-600 text-white px-4 py-2 rounded-r-lg hover:bg-primary-700 transition-colors"
-              aria-label="Inscrever-se na newsletter">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd"
-                  d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                  clip-rule="evenodd" />
-              </svg>
-            </button>
-          </form>
         </div>
       </div>
     </div>
   </footer>
-  
+  <!-- [Fim da Seção: Rodapé] -->
+
+  <!-- [Início do JavaScript] -->
   <script>
-   
+    // Menu mobile toggle
     document.addEventListener('DOMContentLoaded', function () {
       const menuToggle = document.getElementById('menu-toggle');
       const mobileMenu = document.getElementById('mobile-menu');
@@ -647,7 +756,7 @@
       menuToggle.addEventListener('click', function () {
         mobileMenu.classList.toggle('hidden');
 
-        
+        // Alterna o ícone do botão entre hambúrguer e X
         const isOpen = !mobileMenu.classList.contains('hidden');
 
         if (isOpen) {
@@ -665,7 +774,7 @@
         }
       });
 
-      
+      // Fecha o menu mobile ao clicar em um link
       const mobileLinks = mobileMenu.querySelectorAll('a');
       mobileLinks.forEach(link => {
         link.addEventListener('click', () => {
@@ -678,7 +787,7 @@
         });
       });
 
-      
+      // Scroll suave para as seções
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
           e.preventDefault();
@@ -688,14 +797,14 @@
 
           if (targetElement) {
             window.scrollTo({
-              top: targetElement.offsetTop - 80,
+              top: targetElement.offsetTop - 80, // Ajuste para o cabeçalho fixo
               behavior: 'smooth'
             });
           }
         });
       });
 
-      
+      // Implementação da função checkIfInView usando IntersectionObserver
       const animateElements = document.querySelectorAll('[data-animate]');
 
       const observer = new IntersectionObserver((entries) => {
@@ -703,7 +812,8 @@
           if (entry.isIntersecting) {
             entry.target.classList.add('fade-in');
           } else {
-            
+            // Opcional: remover a classe quando o elemento sair da viewport
+            // entry.target.classList.remove('fade-in');
           }
         });
       }, {
@@ -715,41 +825,254 @@
         observer.observe(element);
       });
 
-     
-      const themeToggle = document.getElementById('theme-toggle');
-
-      
+      // Configuração do modo escuro
       function toggleDarkMode() {
-        if (localStorage.theme === 'dark' ||
-          (!('theme' in localStorage) &&
-            window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        // Verificar preferência do sistema
+        if (localStorage.theme === 'dark' || 
+            (!('theme' in localStorage) && 
+             window.matchMedia('(prefers-color-scheme: dark)').matches)) {
           document.documentElement.classList.add('dark');
-          localStorage.theme = 'dark';
         } else {
           document.documentElement.classList.remove('dark');
-          localStorage.theme = 'light';
         }
       }
 
-      
+      // Inicializar o tema com base na preferência do sistema
+      toggleDarkMode();
 
-      
+      // Adicionar evento de clique ao botão de alternância
+      const themeToggle = document.getElementById('theme-toggle');
       themeToggle.addEventListener('click', function () {
-        
-        if (localStorage.theme === 'dark') {
+        // Alternar o tema
+        if (document.documentElement.classList.contains('dark')) {
+          document.documentElement.classList.remove('dark');
           localStorage.theme = 'light';
         } else {
+          document.documentElement.classList.add('dark');
           localStorage.theme = 'dark';
         }
-        toggleDarkMode();
+      });
+
+      // Adicionar listener para mudanças na preferência do sistema
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+        if (!('theme' in localStorage)) {
+          if (e.matches) {
+            document.documentElement.classList.add('dark');
+          } else {
+            document.documentElement.classList.remove('dark');
+          }
+        }
+      });
+
+      // Inicializar o carrossel
+      setupCarousel();
+      
+      // Configurar textarea que cresce com o conteúdo
+      const textareas = document.querySelectorAll('.auto-resize-textarea');
+      textareas.forEach(textarea => {
+        textarea.addEventListener('input', function() {
+          this.style.height = 'auto';
+          this.style.height = (this.scrollHeight) + 'px';
+        });
       });
     });
-      function autoResize(textarea) {
-      textarea.style.height = 'auto';
-      textarea.style.height = textarea.scrollHeight + 'px';
-    }
-  </script>
-  
-</body>
 
+    // Carrossel
+    function setupCarousel() {
+      const carousels = document.querySelectorAll('.carousel');
+      if (carousels.length === 0) {
+        console.log('Nenhum carrossel encontrado');
+        return;
+      }
+
+      console.log(`Inicializando ${carousels.length} carrosséis`);
+
+      carousels.forEach((carousel, carouselIndex) => {
+        const slides = carousel.querySelectorAll('.carousel-slide');
+        if (slides.length === 0) {
+          console.log(`Carrossel ${carouselIndex}: Nenhum slide encontrado`);
+          return;
+        }
+
+        console.log(`Carrossel ${carouselIndex}: ${slides.length} slides encontrados`);
+
+        const prevBtn = carousel.querySelector('.prev');
+        const nextBtn = carousel.querySelector('.next');
+        const indicatorsContainer = carousel.querySelector('.carousel-indicators');
+
+        // Limpar indicadores existentes
+        if (indicatorsContainer) {
+          indicatorsContainer.innerHTML = '';
+
+          // Criar indicadores dinamicamente com base no número de slides
+          slides.forEach((_, index) => {
+            const indicator = document.createElement('button');
+            indicator.setAttribute('aria-label', `Ir para slide ${index + 1}`);
+            if (index === 0) indicator.classList.add('active');
+
+            indicator.addEventListener('click', () => {
+              showSlide(index);
+            });
+
+            indicatorsContainer.appendChild(indicator);
+          });
+        }
+
+        const indicators = carousel.querySelectorAll('.carousel-indicators button');
+
+        let currentIndex = 0;
+        let autoplayInterval;
+        let touchStartX = 0;
+        let touchEndX = 0;
+        let isTransitioning = false;
+
+        // Função para mostrar um slide específico
+        function showSlide(index) {
+          // Evitar mudanças durante transições
+          if (isTransitioning) return;
+          
+          // Verificar se o índice é válido
+          if (index < 0 || index >= slides.length || !slides[index]) {
+            console.warn(`Carrossel ${carouselIndex}: Índice de slide inválido:`, index);
+            return;
+          }
+
+          isTransitioning = true;
+          
+          // Esconder todos os slides
+          slides.forEach(slide => {
+            slide.classList.remove('active');
+            slide.style.display = 'none';
+          });
+
+          // Remover classe active de todos os indicadores
+          if (indicators.length > 0) {
+            indicators.forEach(indicator => {
+              indicator.classList.remove('active');
+            });
+
+            // Destacar o indicador atual
+            if (indicators[index]) {
+              indicators[index].classList.add('active');
+            }
+          }
+
+          // Mostrar o slide atual
+          slides[index].classList.add('active');
+          slides[index].style.display = 'block';
+
+          currentIndex = index;
+          
+          // Permitir nova transição após um tempo
+          setTimeout(() => {
+            isTransitioning = false;
+          }, 600);
+        }
+
+        // Função para ir para o próximo slide
+        function nextSlide() {
+          let newIndex = currentIndex + 1;
+          if (newIndex >= slides.length) {
+            newIndex = 0;
+          }
+          showSlide(newIndex);
+        }
+
+        // Função para ir para o slide anterior
+        function prevSlide() {
+          let newIndex = currentIndex - 1;
+          if (newIndex < 0) {
+            newIndex = slides.length - 1;
+          }
+          showSlide(newIndex);
+        }
+
+        // Adicionar eventos de botão se existirem
+        if (prevBtn) {
+          prevBtn.addEventListener('click', prevSlide);
+        }
+
+        if (nextBtn) {
+          nextBtn.addEventListener('click', nextSlide);
+        }
+
+        // Adicionar eventos de toque para dispositivos móveis
+        carousel.addEventListener('touchstart', (e) => {
+          touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        carousel.addEventListener('touchend', (e) => {
+          touchEndX = e.changedTouches[0].screenX;
+          handleSwipe();
+        }, { passive: true });
+
+        function handleSwipe() {
+          const swipeThreshold = 50; // Mínimo de pixels para considerar um swipe
+          if (touchEndX < touchStartX - swipeThreshold) {
+            // Swipe para a esquerda (próximo slide)
+            nextSlide();
+          } else if (touchEndX > touchStartX + swipeThreshold) {
+            // Swipe para a direita (slide anterior)
+            prevSlide();
+          }
+        }
+
+        // Iniciar o carrossel com o primeiro slide
+        showSlide(0);
+
+        // Função para iniciar o autoplay
+        function startAutoplay() {
+          stopAutoplay(); // Limpar qualquer intervalo existente
+          autoplayInterval = setInterval(nextSlide, 5000); // 5 segundos
+        }
+
+        // Função para parar o autoplay
+        function stopAutoplay() {
+          if (autoplayInterval) {
+            clearInterval(autoplayInterval);
+          }
+        }
+
+        // Iniciar autoplay
+        startAutoplay();
+
+        // Pausar o autoplay quando o mouse estiver sobre o carrossel
+        carousel.addEventListener('mouseenter', stopAutoplay);
+        carousel.addEventListener('touchstart', stopAutoplay, { passive: true });
+
+        // Retomar o autoplay quando o mouse sair do carrossel
+        carousel.addEventListener('mouseleave', startAutoplay);
+        carousel.addEventListener('touchend', () => {
+          // Pequeno atraso para retomar após o toque
+          setTimeout(startAutoplay, 1000);
+        }, { passive: true });
+
+        // Adicionar suporte para navegação por teclado
+        carousel.addEventListener('keydown', (e) => {
+          if (e.key === 'ArrowLeft') {
+            prevSlide();
+          } else if (e.key === 'ArrowRight') {
+            nextSlide();
+          }
+        });
+
+        console.log(`Carrossel ${carouselIndex}: Inicializado com sucesso`);
+      });
+    }
+
+    // Adicionar um evento de redimensionamento para garantir que o carrossel funcione após mudanças de orientação
+    window.addEventListener('resize', () => {
+      console.log('Redimensionamento detectado: Reinicializando carrossel');
+      // Pequeno atraso para garantir que o redimensionamento esteja completo
+      setTimeout(setupCarousel, 200);
+    });
+
+    // Adicionar um evento de carregamento para garantir que as imagens estejam carregadas
+    window.addEventListener('load', () => {
+      console.log('Página totalmente carregada: Reinicializando carrossel');
+      setupCarousel();
+    });
+  </script>
+  <!-- [Fim do JavaScript] -->
+</body>
 </html>
